@@ -1,18 +1,21 @@
 # Spherical Regge Scissors
 
-This repository contains a focused manuscript proving that every
-nondegenerate spherical tetrahedron is scissors congruent to each of its
-elementary Regge mates. The proof passes from the monomial Regge action on
-angle phases to a relative weight-two quadric motive, proves that its framed
-Regge defect vanishes, and then specializes the resulting identity to the
-spherical scissors group.
+This repository contains a focused manuscript and Lean development for a
+conditional proof that every nondegenerate spherical tetrahedron is scissors
+congruent to each elementary Regge mate. The internal Regge algebra and the
+deduction from an explicit external theorem package are machine checked. The
+relative motivic and comparison bridge named E2--E5 in the manuscript remains
+an input, not a theorem silently supplied by ordinary homology or by Mathlib.
 
 The manuscript is an **unattributed pre-release research draft**. It is not a
 substitute for independent expert review, and the theorem should not yet be
 cited as settled literature on the strength of this repository alone. The
-source passes the documented release build and log scan, the cited theorem interfaces have been checked against
-their primary sources, and the internal critical path has undergone several
-adversarial audits; there is no machine-checked formalization.
+source passes the documented release build and log scan, the cited theorem
+interfaces have been checked against their primary sources, and the internal
+critical path has undergone several adversarial audits. The accompanying Lean
+project machine-checks the finite algebra and the conditional implication,
+but does not construct motives, motivic cohomology, algebraic K-theory, or
+spherical scissors groups from foundations.
 
 The mathematical guide is published at
 <https://sashakolpakov.github.io/spherical-regge-scissors/>. It explains the
@@ -23,7 +26,11 @@ final specialization without introducing theory not used by the proof.
 
 | Item | Contents |
 |---|---|
-| [`paper/spherical-regge-scissors.pdf`](paper/spherical-regge-scissors.pdf) ([TeX](paper/spherical-regge-scissors.tex)) | *The Spherical Regge Scissors Theorem: A Self-Contained Proof through Weight-Two Motives*. This is the complete proof and the recommended starting point. |
+| [`paper/spherical-regge-scissors.pdf`](paper/spherical-regge-scissors.pdf) ([TeX](paper/spherical-regge-scissors.tex)) | *The Spherical Regge Scissors Theorem: A Conditional Proof through an Explicit Weight-Two Contract*. This is the mathematical starting point. |
+| [`formal/README.md`](formal/README.md) | Scope, build instructions, and trust boundary for the Lean development. |
+| [`formal/MANUSCRIPT_MAP.md`](formal/MANUSCRIPT_MAP.md) | Exact map from manuscript steps to Lean declarations or external interface fields. |
+| [`formal/contract_map.json`](formal/contract_map.json) | Exhaustive machine-checked assignment of all 77 trust-structure fields to E1--E8. |
+| [`SELF_CONTAINEDNESS_AUDIT.md`](SELF_CONTAINEDNESS_AUDIT.md) | Audit of definition closure and the remaining E2--E5 external boundary. |
 | [`CRITICAL_PATH_AUDIT.md`](CRITICAL_PATH_AUDIT.md) | Dependency-by-dependency account of what is proved internally and what is imported. |
 | [`STATUS.md`](STATUS.md) | Conservative proof and review status of the theorem and its essential components. |
 
@@ -39,9 +46,9 @@ The proof has one continuous path:
    Regge involution as a monomial transformation;
 2. prove invariance of the Gram determinant and cover the resulting
    orientation double cover by rational charts;
-3. construct the relative quadric motive and compute its three weight pieces
-   and reduced coproduct;
-4. identify the only possible framed defect with a class in
+3. invoke the explicitly stated relative-motive package, including its three
+   weight pieces, reduced coproduct, Artin descent, and fibre comparison;
+4. identify the only possible framed defect, through that package, with a class in
    \(H^1(U,\mathbb Q(2))\), which vanishes by the stated
    Garkusha--Borel input; and
 5. use Goncharov's weight-two comparison, spherical map, and the standard
@@ -50,13 +57,16 @@ The proof has one continuous path:
 
 The manuscript defines the elementary notions needed to read these steps,
 including motives, Tate and Artin objects, filtrations, framed coefficients,
-and the coefficient coproduct. General motivic theory, alternative proof
-programs, and unrelated scissors-congruence results are intentionally absent.
+and the coefficient coproduct. Those definitions explain the meaning of
+E2--E5; they do not construct the required relative category. General motivic
+theory, alternative proof programs, and unrelated scissors-congruence results
+are intentionally absent.
 
 ## Research and audit records
 
-- [`STATUS.md`](STATUS.md) distinguishes a complete written argument from
-  independent validation and publication.
+- [`STATUS.md`](STATUS.md) distinguishes the complete conditional implication
+  from construction of its external contract, independent validation, and
+  publication.
 - [`AUDIT_LOG.md`](AUDIT_LOG.md) records the mathematical, source, notation,
   and release audits performed on this draft.
 - [`CRITICAL_PATH_AUDIT.md`](CRITICAL_PATH_AUDIT.md) lists every essential
@@ -69,10 +79,11 @@ programs, and unrelated scissors-congruence results are intentionally absent.
 ## Rebuilding
 
 A current TeX Live installation with `latexmk` builds the manuscript. The
-complete verification command additionally uses Python 3.12 or later,
-`ripgrep`, Ghostscript, and the exact Sphinx packages pinned in
-`docs/requirements.txt`. The standalone repository scripts remain compatible
-with Python 3.10 or later.
+complete verification command additionally uses the Lean toolchain pinned in
+`formal/lean-toolchain`, the Mathlib revision pinned in
+`formal/lake-manifest.json`, Python 3.12 or later, `ripgrep`, Ghostscript, and
+the exact Sphinx packages pinned in `docs/requirements.txt`. The standalone
+repository scripts remain compatible with Python 3.10 or later.
 
 Run every local release check from the repository root with:
 
@@ -108,6 +119,6 @@ PDF byte for byte.
 ## Source and release status
 
 The public `main` branch contains the manuscript source, its source-built PDF,
-the critical-path guide, and the release checks. No formal proof is claimed,
-no archival release or journal acceptance is implied, and no repository-wide
-license is asserted.
+the conditional Lean formalization, the critical-path guide, and the release
+checks. No unconditional formal proof, archival release, journal acceptance,
+or repository-wide license is claimed.

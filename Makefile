@@ -1,5 +1,6 @@
-.PHONY: all paper papers paper-force papers-force docs check-docs docs-clean \
+.PHONY: all paper papers paper-force papers-force formal docs check-docs docs-clean \
 	check-bibliography check-source-hygiene check-tex-logs check-links \
+	check-lean-source check-lean-axioms check-formal-coverage check-contract-parity \
 	check-artifact check-pdf-reproducibility check-manifest verify \
 	verify-after-artifact clean
 
@@ -14,7 +15,7 @@ PAPER_PDF := paper/$(PAPER_STEM).pdf
 PAPER_INPUTS := $(PAPER_SOURCE) paper/macros.tex paper/biblio.bib \
 	$(wildcard paper/sections/*.tex) .latexmkrc
 
-all: paper docs
+all: paper formal docs
 
 paper papers: $(PAPER_PDF)
 
@@ -28,6 +29,21 @@ paper-force papers-force:
 
 docs:
 	sphinx-build -b html -W --keep-going -n docs docs/_build/html
+
+formal:
+	cd formal && lake build
+
+check-lean-source:
+	python3 scripts/check_lean_source.py
+
+check-lean-axioms: formal check-lean-source
+	python3 scripts/check_lean_axioms.py
+
+check-formal-coverage:
+	python3 scripts/check_formal_coverage.py
+
+check-contract-parity:
+	python3 scripts/check_contract_parity.py
 
 check-docs: docs
 
@@ -50,10 +66,10 @@ check-tex-logs: paper-force
 	fi
 	@font_notice_count=$$(rg -c 'pdfTeX warning \(font expansion\): font should be expanded before its first use' \
 		paper/$(PAPER_STEM).log || true); \
-	if [ "$${font_notice_count:-0}" -ne 2 ]; then \
-		echo "Expected exactly two allowlisted pdfTeX font-expansion notices; found $${font_notice_count:-0}."; exit 1; \
+	if [ "$${font_notice_count:-0}" -ne 0 ]; then \
+		echo "Unexpected pdfTeX font-expansion notices: $${font_notice_count:-0}."; exit 1; \
 	else \
-		echo 'Allowlisted pdfTeX font-expansion notices: 2'; \
+		echo 'pdfTeX font-expansion notices: none'; \
 	fi
 	@bib_scan_rc=0; \
 	rg -n 'Warning--|error message' paper/$(PAPER_STEM).blg || bib_scan_rc=$$?; \
@@ -81,7 +97,8 @@ verify: check-artifact
 	$(MAKE) verify-after-artifact
 
 verify-after-artifact: check-bibliography check-source-hygiene check-tex-logs \
-	check-links check-docs check-manifest
+	check-links check-lean-axioms check-formal-coverage check-contract-parity \
+	check-docs check-manifest
 
 docs-clean:
 	$(RM) -r docs/_build

@@ -1,44 +1,46 @@
 # Status of the result
 
-Manuscript freeze date: 27 September 2026.  Primary-source audit date:
+Formal-contract revision date: 27 September 2026. Primary-source audit date:
 26 September 2026.
 
-The labels below are deliberately conservative.  “Complete in the
-manuscript” means that the argument is written through to the stated
-conclusion; it does not mean that the argument has passed independent expert
-review or appeared in refereed literature.
+The repository now distinguishes three claims:
 
-| Component | Status in this repository | Dependency status |
+- The finite Regge algebra and the logical implication from E1--E8 to a
+  finite equidecomposition are formalized in Lean.
+- The manuscript is self-contained as a conditional argument: every
+  non-elementary premise is stated in E1--E8 and mapped to the Lean contract.
+- The unconditional spherical Regge scissors theorem is not established
+  here, because the exact relative motivic bridge E2--E5 has not been
+  constructed or supplied by a cited theorem in that full form.
+
+| Component | Repository status | Trust boundary |
 |---|---|---|
-| Spherical Regge transformation and equality of volume | Imported in the exact form stated | Akopyan--Izmestiev, Theorem 1 |
-| Monomial action on angle phases | Complete in the manuscript | Direct calculation from the Regge formulas |
-| Gram-determinant invariance | Complete in the manuscript | Laurent-invariant calculation in Section 2 |
-| Rational orientation charts | Complete in the manuscript | Explicit birational formulas in Section 2 |
-| Relative quadric motive and alternating face complex | Defined and constructed in the manuscript | Standard triangulated motivic operations are imported and stated before use |
-| Three weight pieces | Complete in the manuscript | Purity, quadric/conic decompositions, and the displayed face totalization |
-| Reduced coproduct of the framed motive | Complete in the manuscript | Direct face and Schur-complement calculation |
-| Regge invariance of the coproduct | Complete in the manuscript | Hadamard orthogonality plus the fixed-phase Artin channel |
-| Vanishing of the primitive defect | Complete in the manuscript | Reduces to the stated Garkusha birational-invariance input and Borel's rational \(K_3\) computation |
-| Passage from the motivic class to spherical scissors congruence | Complete in the manuscript | Uses the precise weight-two comparison and spherical-map theorems of Goncharov and the cited scissors-group facts from Dupont |
-| Removal of rational coefficients and suspension | Complete in the manuscript | Rational-vector property, suspension-volume identity, Regge volume equality, and the standard spherical equidecomposition theorem |
-| Spherical Regge scissors theorem | Complete written proof; public pre-release | No independent expert validation or formal proof is claimed |
+| Regge matrix and monomial phase action | Proved in Lean | Geometric realization and volume equality are E1 |
+| Gram determinant and rational charts | Polynomial identities proved in Lean | Physical-locus and finite-etale geometric assertions are stated separately |
+| Relative quadric coefficient | Explained and typed | Existence/functoriality are E2 |
+| Three weight pieces and primitive kernel | Semantics explained; deduction from kernel comparison proved in Lean | Strict filtration, comparison, and vanishing are E3 |
+| Relative coproduct and Artin descent | Four-channel algebra and derived fibre primitivity proved in Lean | Six-channel formula, trace, and specialization square are E4 |
+| Fibre endpoint | Diagram chase proved in Lean | Linear maps and exact equality with Goncharov's \(c_G\) are E5 |
+| Field-level and spherical injections | Used through typed maps and generator comparisons | E6--E7 |
+| Suspension, area, volume, and cancellation | Final finite-list witness deduced in Lean | Rationalization and structural scissors statements are E8; Regge volume is E1 |
+| Main result | Kernel-checked conditional theorem | Unconditional status awaits E2--E5 |
 
-## Principal claim
+## Principal conditional claim
 
-For every nondegenerate spherical tetrahedron \(T\subset S^3\), each
-elementary Regge mate \(R(T)\) is scissors congruent to \(T\).  Equivalently,
-there are finite geodesic dissections of the two tetrahedra whose pieces can
-be paired by spherical isometries.
+For every nondegenerate spherical tetrahedron \(T\subset S^3\), if the
+external package E1--E8 is instantiated for a rational chart containing
+\(T\) and its elementary Regge mate \(T^R\), then \(T\) and \(T^R\)
+admit finite geodesic dissections whose pieces pair by spherical isometries.
 
-The statement allows arbitrary real nondegenerate spherical tetrahedra; no
-algebraicity hypothesis is imposed.  The exact conventions for spherical
-polytopes, orientations, the Regge involution, and scissors congruence occur
-at the beginning of the manuscript.
+No algebraicity assumption is imposed on the individual tetrahedron. The
+exact conventions and the complete external package appear at the beginning
+of the manuscript.
 
 ## Review boundary
 
-The source interfaces and the internal critical path have been audited, and
-the release checks establish only syntactic, bibliographic, documentation,
-and reproducibility properties.  They do not replace mathematical peer
-review.  In particular, the repository makes no priority claim and does not
-represent the theorem as accepted literature.
+Lean's kernel checks the project declarations and the conditional theorem,
+not the mathematical truth of values later supplied for the contract. The
+source and release checks establish compilation, absence of proof
+placeholders and project axioms, documentation consistency, and reproducible
+artifacts. They do not replace construction of E2--E5, independent expert
+review, or publication.

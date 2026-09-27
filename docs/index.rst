@@ -9,8 +9,8 @@ theory that the proof does not use.
 .. admonition:: Principal result
    :class: theorem
 
-   Every nondegenerate spherical tetrahedron is scissors congruent to each of
-   its elementary Regge mates.
+   Assuming the explicit external package E1--E8, every nondegenerate
+   spherical tetrahedron is scissors congruent to each elementary Regge mate.
 
 Here scissors congruence means that the two tetrahedra admit finite geodesic
 dissections whose pieces can be paired by isometries of the sphere.  The
@@ -31,14 +31,16 @@ made.
    :caption: Sources and verification
 
    source_interfaces
+   formalization
    manuscript
    reproducibility
 
 Current status
 --------------
 
-The manuscript is an unattributed pre-release research draft.  Its sources,
-citation interfaces, and internal critical path have been audited, but there
-is no machine-checked formalization or independent referee report.  The
-repository should therefore not be cited as establishing settled literature
-without further expert verification.
+The manuscript is an unattributed pre-release research draft.  Lean checks
+the Regge-specific algebra and the complete implication from a typed theorem
+package to equidecomposability.  It does not construct that package: the
+relative-motivic and fibre-comparison obligations E2--E5 remain external.
+There is no independent referee report, so the repository does not establish
+the unconditional theorem as settled literature.

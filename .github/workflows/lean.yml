@@ -1,0 +1,35 @@
+name: Lean
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  formal:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Build and audit Lean declarations
+        uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal
+          build: true
+          test: false
+          lint: false
+          axiom-audit: true
+          axiom-audit-root: SphericalReggeScissors
+
+      - name: Check project source and public theorem dependencies
+        run: |
+          python3 scripts/check_lean_source.py
+          python3 scripts/check_lean_axioms.py
+          python3 scripts/check_formal_coverage.py
+          python3 scripts/check_contract_parity.py

@@ -48,7 +48,7 @@ def generated(path: Path) -> bool:
 def candidate_paths() -> list[Path]:
     if (ROOT / ".git").is_dir():
         result = subprocess.run(
-            ["git", "ls-files", "-z"],
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z"],
             cwd=ROOT,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

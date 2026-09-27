@@ -9,6 +9,9 @@ __pycache__/
 # Sphinx build output
 docs/_build/
 
+# Lean/Lake build output.  The pinned manifest remains tracked.
+formal/.lake/
+
 # LaTeX intermediates. The release PDF remains tracked.
 paper/*.aux
 paper/*.bbl

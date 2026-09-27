@@ -11,7 +11,7 @@
   citecolor=green!40!black,
   urlcolor=blue!65!black]{hyperref}
 \hypersetup{
-  pdftitle={The Spherical Regge Scissors Theorem: A Self-Contained Proof through Weight-Two Motives},
+  pdftitle={The Spherical Regge Scissors Theorem: A Conditional Proof through an Explicit Weight-Two Contract},
   pdfauthor={}}
 
 \input{paper/macros}
@@ -27,25 +27,27 @@
 
 \title[The spherical Regge theorem]
   {The Spherical Regge Scissors Theorem:\\
-   A Self-Contained Proof through Weight-Two Motives}
+   A Conditional Proof through an Explicit Weight-Two Contract}
 \author{}
 \date{Research draft, 27 September 2026}
 
 \begin{document}
 
 \begin{abstract}
-We prove that every nondegenerate spherical tetrahedron is scissors
-congruent to each elementary Regge mate.  This text contains only the proof
-of that statement and the background needed to read it.  In particular, we
-derive the monomial Regge action on angle phases, rationalize the orientation
-double cover of the Gram-parameter space, explain the particular relative
-quadric motive used in the proof, compute its three weight pieces and its
-coproduct, and reduce the sole primitive obstruction to
-\(H^1(U,\Q(2))=0\).  We then spell out the specialization to the given
-tetrahedron and the final passage from Goncharov's quadric invariant to a
-finite spherical equidecomposition.  General motivic theory and alternative
-chain constructions are not developed beyond the precise standard results
-used in this argument.
+We give a conditional proof that every nondegenerate spherical tetrahedron
+is scissors congruent to each elementary Regge mate.  The hypotheses are an
+explicit theorem package separating published field-level results from the
+relative motivic and comparison bridge still required over the rational
+parameter space.  Internally we derive the monomial Regge action on angle
+phases, rationalize the orientation double cover, prove the finite
+four-channel tensor cancellation, and carry out the primitive-kernel and
+scissors-group diagram chases.  We explain the relative quadric motive that
+the external package is intended to supply, including its three weight
+pieces, coproduct, Artin descent, and fibre comparison, without treating
+those assertions as consequences of ordinary homology.  An accompanying
+Lean development checks the internal algebra and conditional implication
+without project axioms; it represents every motivic and scissors-theoretic
+input by a named field of the proof contract.
 \end{abstract}
 
 \maketitle

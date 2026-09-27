@@ -48,6 +48,6 @@ On the double cover :math:`w^2=\det G`, the combinations
 
 produce two explicit rational charts.  Their denominators define principal
 opens, and every physical pair belongs to at least one chart.  The omitted
-fixed half-phase defines a finite étale double cover :math:`U_p\to U`.  Its
-sign representation becomes the Artin summand in the middle weight of the
-relative motive.
+fixed half-phase defines a finite étale double cover :math:`U_p\to U`.  E3
+identifies its sign representation with the Artin summand in the intended
+middle weight of the relative motive.

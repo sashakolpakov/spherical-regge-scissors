@@ -7,11 +7,13 @@ From a clone of the repository, run:
 
    $ make verify
 
-This command performs a forced LaTeX build, checks the TeX and BibTeX logs,
-validates the bibliography and local links, scans the public source tree for
-release hazards, builds this documentation with warnings treated as errors,
-rebuilds the manuscript in an isolated temporary path, and compares the PDF
-bytes with the checked-in artifact and release manifest.
+This command builds the pinned Lean project, rejects proof placeholders and
+undocumented axioms, checks manuscript-to-interface coverage, performs a
+forced LaTeX build, checks the TeX and BibTeX logs, validates the bibliography
+and local links, scans the public source tree, builds this documentation with
+warnings treated as errors, rebuilds the manuscript in an isolated temporary
+path, and compares the PDF bytes with the checked-in artifact and release
+manifest.
 
 The manuscript alone can be rebuilt with:
 
@@ -23,10 +25,11 @@ Required tools
 --------------
 
 The manuscript needs a current TeX Live distribution and ``latexmk``.  The
-full verification target additionally needs Python 3.12 or later,
-``ripgrep``, Ghostscript, and the Sphinx/Furo versions pinned in
-``docs/requirements.txt``.  The standalone Python checks remain compatible
-with Python 3.10 or later.
+formal build uses the toolchain in ``formal/lean-toolchain`` and the Mathlib
+revision in ``formal/lake-manifest.json``.  The full verification target also
+needs Python 3.12 or later, ``ripgrep``, Ghostscript, and the Sphinx/Furo
+versions pinned in ``docs/requirements.txt``.  The standalone Python checks
+remain compatible with Python 3.10 or later.
 
 Deterministic artifact
 ----------------------

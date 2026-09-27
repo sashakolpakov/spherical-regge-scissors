@@ -1,118 +1,96 @@
 # Critical-path audit
 
-This document is a dependency map for the main proof.  It is not a second
-manuscript and introduces no auxiliary theory.  Each item says what must be
-known at that point, what the manuscript proves, and what is imported.
+This is the dependency map for the conditional proof. “Lean” means the
+declaration is kernel checked in this repository. “External” means a named
+field of the E1--E8 proof package must be supplied; it is not a global Lean
+axiom.
 
-## 1. Geometric input
+## 1. Geometric input — external E1
 
-The proof starts with a nondegenerate spherical tetrahedron \(T\subset S^3\)
-and one elementary Regge involution.  Akopyan--Izmestiev supplies two facts:
-the transformed six angles are again realized by a spherical tetrahedron, and
-the two tetrahedra have equal volume.  Everything after this point compares
-their scissors classes.
+Start with a nondegenerate spherical tetrahedron and one elementary Regge
+mate. E1 supplies realization of the mate, the common Regge matrix on the
+four moving angles and lengths, and equality of volume.
 
-## 2. Phase-coordinate algebra
+## 2. Phase-coordinate algebra — Lean
 
-Write each angle as a unit phase.  Four moving phases are transformed by
-\(a\mapsto\tau/a\), where \(\tau\) is their half-product; the two opposite
-phases are fixed.  The manuscript:
+Exponentiation changes the additive formula to
+\(a_i\mapsto\tau/a_i\), with \(\tau^2=\prod_i a_i\). Lean proves that
+this preserves the phase relation and is involutive. It also proves symmetry,
+orthogonality, and involutivity of \(R=\frac12J-I\).
 
-1. derives this monomial formula from the usual additive Regge formula;
-2. writes the angle Gram determinant in a small Laurent-invariant basis;
-3. proves that each basis element is fixed by the involution; and
-4. concludes that the determinant orientation cover is Regge invariant.
+## 3. Determinant and orientation charts — Lean plus geometric boundary
 
-No geometric classification or hidden algebraicity hypothesis enters this
-calculation.
+Lean expands the actual \(4\times4\) Gram determinant, proves the two
+coefficient polynomials invariant under the monomial Regge substitution, and
+checks both rational chart inverses and their cover on \(sw\ne0\). It also
+checks the fixed-phase quadratic, discriminant, inverse/deck formula, and deck
+involution. Smoothness, finite etaleness as schemes, positivity of the
+physical Gram matrix, and placement of a physical pair on the open are
+standard geometric assertions rather than objects modeled in Lean.
 
-## 3. Rational orientation charts
+## 4. Relative coefficient — external E2
 
-The square root of the Gram determinant remembers an orientation.  Explicit
-variables \(r=w-sx\) and \(r_+=w+sx\) give two rational charts on that double
-cover.  Their inverse formulas are displayed and checked.  Every physical
-tetrahedron/Regge-mate pair lies on one of these charts, after shrinking to a
-Regge-stable principal open \(U\).  The one omitted half-phase is retained as
-a finite étale double cover \(U_p\to U\); it is not silently rationalized.
+E2 supplies the two relative framed coefficients over each rational chart,
+their reduced coproduct map, and pullback to a complex point. The manuscript
+defines the intended four-term face totalization
+\(\operatorname{RHom}(\operatorname{Tot}(M(\text{faces})),\mathbb
+Q_U)(2)\), but does not infer its existence from an ordinary complex of
+rational vector spaces.
 
-## 4. The only motivic object used
+## 5. Strict three-weight kernel — external E3, deduction in Lean
 
-For the universal oriented Gram quadric and its four facet hyperplanes, the
-manuscript forms the alternating totalization of their relative motives.  It
-first explains the exact notions needed to parse this sentence: a motive as
-an object of a triangulated category, localization and purity triangles,
-Tate and Artin objects, and the face totalization.  No general theory beyond
-these operations is developed.
-
-Splitting the quadric and all coordinate strata gives three graded pieces:
-
+E3 states the intended graded pieces
 \[
-  \mathbb Q(0),\qquad
-  \mathbb Q(1)^{\oplus 5}\oplus\chi(1),\qquad
-  \mathbb Q(2),
+\mathbb Q(0),\qquad
+\mathbb Q(1)^{\oplus5}\oplus\chi(1),\qquad
+\mathbb Q(2),
 \]
+strictness of the filtration, identification of the primitive kernel with
+\(H^1(U,\mathbb Q(2))\), and vanishing of that group. Given the resulting
+kernel equivalence, Lean proves that a class with zero reduced coproduct is
+zero.
 
-where \(\chi\) is the sign Artin object of the fixed-phase double cover.
+## 6. Coproduct comparison — external E4, cancellation in Lean
 
-## 5. Framed coefficients and the primitive kernel
+E4 supplies the exact relative formula \(\sum_e L_e\otimes A_e\), its
+factor order and complementary indexing, normalized twisted-trace
+descent for the nonsplit sign-Artin channel, and a commuting specialization
+square into the field-level quadric coproduct. Its typed channel data expose
+the two common fixed terms and the four moving half-phase terms. Lean proves
+\(H^tH=4I\), derives the normalized tensor equality, passes it through the
+external coproduct formulas, and concludes that the universal defect is
+primitive. It then uses the commuting square to construct the fibre-kernel
+membership proof required by \(c_G\). Thus neither Regge cancellation nor
+fibre primitivity is assumed as an untyped label.
 
-The manuscript defines a framed object, its coefficient, and the reduced
-coaction before using them.  A self-contained three-level lemma proves that,
-inside the restricted weight category generated by the displayed pieces, a
-coefficient with zero reduced coproduct is precisely a two-step extension
-class.  Thus the difference between the universal Regge frame and its mate
-can only survive in \(\operatorname{Ext}^1(\mathbb Q(0),\mathbb Q(2))\),
-identified with \(H^1(U,\mathbb Q(2))\).
+## 7. Universal vanishing — E3 plus Lean
 
-## 6. Coproduct comparison
+The Lean proof combines the coproduct equality from Step 6 with E3's
+primitive-kernel comparison and vanishing. The universal framed defect is
+therefore zero, conditional on E2--E4.
 
-The reduced coproduct is
+## 8. Fibre comparison — external E5
 
-\[
-  \sum_e L_e\otimes A_e,
-\]
+E5 supplies linear specialization and endpoint maps and says that the
+endpoint of the specialized relative class is exactly
+Goncharov's \(c_G\) of the dual quadric-scissors defect, with the same
+frames, signs, duality, and Tate twist. Equality of periods or regulators
+would not suffice; equality of classes is the named obligation.
 
-with the length coordinate first and the complementary angle coordinate
-second.  Restricting to the intersection of two facets produces the relevant
-binary angle block; taking the quotient produces the complementary edge via
-an explicit Schur complement.  The four moving channels are invariant under
-the Regge transformation by Hadamard orthogonality.  The fifth ordinary
-channel is fixed.  The sixth is the sign channel of (U_p/U), handled
-separately in the split and connected cases.  Therefore the framed defect has
-zero reduced coproduct.
+## 9. Return to spherical scissors — external E6--E8, deduction in Lean
 
-## 7. Vanishing of the primitive defect
-
-The rational chart has a purely transcendental function field over
-\(\mathbb Q\).  The quoted low-degree result of Garkusha identifies the
-weight-two group on the connected smooth open with the corresponding group
-of that function field and makes the purely transcendental reduction.  The
-remaining base-field group is the rational weight-two part of
-\(K_3(\mathbb Q)\), which vanishes by Borel's rank computation.  Hence
-
-\[
-  H^1(U,\mathbb Q(2))=0,
-\]
-
-so the universal framed Regge defect vanishes.
-
-## 8. Specialization and scissors congruence
-
-Pullback specializes the universal identity to the chosen real tetrahedron.
-The manuscript then invokes the exact weight-two comparison and spherical
-map proved by Goncharov, after matching its relative quadric convention with
-the standard spherical scissors presentation.  Injectivity places the
-difference of the two suspended tetrahedral classes at zero rationally.
-
-Dupont's rational-vector result removes rational coefficients.  The
-suspension-volume identity and equality of Regge volumes remove the remaining
-suspension kernel.  The spherical equidecomposition theorem then converts
-equality in the scissors group into finite scissors congruence.
+E6 supplies the field-level injectivity statements, duality, and its generator
+compatibility; E7 identifies the spherical presentation and the particular
+Regge defect; E8 supplies injective rationalization, exactness at the full
+scissors group, the suspension-volume identity, area injectivity, and finite
+cancellation.
+Lean performs all specialization, injectivity, suspension, volume, and final
+equidecomposition deductions.
 
 ## Audit conclusion
 
-Every transition above is either proved in the manuscript or attached to a
-precisely stated external theorem.  No conjectural chain map, algebraicity
-assumption on the tetrahedron, or unrecorded cap/chain construction remains on
-the proof path.  The conclusion remains a pre-release claim pending
-independent expert review.
+Every transition is either a compiled Lean declaration or a specifically
+named E1--E8 field. The conditional implication is closed and
+self-contained relative to those fields. A standalone unconditional proof
+still requires construction of E2--E5; the repository no longer describes
+that literature gap as a completed internal step.

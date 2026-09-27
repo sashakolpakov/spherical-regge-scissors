@@ -1,80 +1,66 @@
 # Audit log
 
-This log records checks performed on the focused manuscript and on the files
-prepared for public release.  It distinguishes mathematical review from
-automated build checks.
+This log distinguishes source review, internal formal verification, and the
+remaining mathematical trust boundary.
 
-## 26 September 2026: primary-source interfaces
+## 26 September 2026: source interfaces
 
-The exact passages used from the following sources were checked against the
-primary text:
+The cited passages were checked for Akopyan--Izmestiev, Goncharov, Garkusha,
+Borel, Brown, and Dupont. That audit supports the field-level and
+scissors-theoretic ingredients, but did not locate one theorem supplying the
+simultaneous relative construction, strict filtration, Artin-trace
+coproduct, and fibre equality required over the parameter space.
 
-- Akopyan--Izmestiev for the spherical Regge transformation and volume
-  equality;
-- Goncharov for the weight-two coefficient/scissors comparison and the
-  spherical homomorphism;
-- Garkusha for the low-degree birational and purely transcendental invariance
-  of semilocal weight-two motivic cohomology;
-- Borel for the rational \(K_3(\mathbb Q)\) vanishing used after the Garkusha
-  reduction;
-- Brown for the normalization of the quadric relative motive; and
-- Dupont for the rational-vector and spherical scissors-group inputs used in
-  the final passage.
+## 27 September 2026: motivic boundary correction
 
-The manuscript states these external inputs separately from the calculations
-performed inside the proof.  It does not invoke Goncharov's general explicit
-chain-map conjecture.
+An adversarial audit found that the first release treated several
+family-level assertions as consequences of generic motivic language. The
+manuscript was therefore recast as a conditional theorem with E1--E8.
+In particular:
 
-## 26--27 September 2026: adversarial proof audits
+- E2 names relative coefficient construction and functoriality;
+- E3 names the exact graded pieces, strict heart, primitive comparison, and
+  weight-two vanishing;
+- E4 names the relative six-channel coproduct, sign-Artin trace descent, and
+  the coproduct-specialization square which supplies fibre primitivity;
+- E5 names linear specialization/endpoint maps and the fibre endpoint
+  equality with Goncharov's \(c_G\); and
+- E6--E8 isolate the field-level injections and spherical-scissors facts.
 
-Separate passes checked the algebraic phase charts, the three-weight
-categorical lemma, the coproduct calculation, descent through the fixed-phase
-cover, and the final scissors comparison.  The resulting repairs include:
+This correction supersedes the earlier claim that the relative bridge had
+been constructed inside the manuscript.
 
-- fixing the tensor-factor order in the reduced coproduct;
-- matching every angle channel with its complementary length channel;
-- writing the Schur-complement computation that produces the physical edge
-  length;
-- making the half-phase Hadamard orthogonality calculation explicit;
-- separating the split and connected cases of the fixed-phase double cover;
-- identifying the descent map as the normalized twisted trace in the Artin
-  sign channel;
-- keeping the auxiliary induced-orientation choice fixed when a quadric
-  ruling is selected;
-- distinguishing the integral spherical scissors complex from its rational
-  and parity-twisted forms; and
-- explaining why rationalization and spherical suspension can both be
-  removed at the end.
+## 27 September 2026: Lean formalization
 
-The final hostile logic pass reported no remaining fatal or major defect in
-the patched critical path.  This is an internal audit result, not an
-independent referee report.
+The project formalizes the finite Regge matrix, phase action, actual
+\(4\times4\) Gram determinant formula, determinant-coefficient invariance,
+rational charts, fixed-phase deck algebra, normalized four-channel tensor
+cancellation, primitive-kernel deduction, derived fibre-kernel membership,
+specialization/injectivity chase, suspension-volume argument, and a final
+finite-list equidecomposition certificate.
 
-## 27 September 2026: exposition and scope
+The external facts are fields of structures rather than global axioms. A
+finite inhabited model checks consistency of the interface, while a separate
+finite countermodel shows that Regge involutivity and equal volume alone do
+not force scissors equality. Automated scans reject proof placeholders and
+trust-broadening declarations and audit the output of `#print axioms`.
 
-The manuscript was separated from the broader working directory and rebuilt
-using only one driver, five ordered section files, one macro file, and the
-seven bibliography entries actually cited.  Definitions of motives, Tate and
-Artin objects, weight filtrations, framed coefficients, coefficient
-coalgebras, and specialization were retained because they are needed to read
-the proof.  Alternative chain constructions and theory not used on the proof
-path were excluded.
+## 27 September 2026: self-containedness and release audit
 
-The public-release audit also checks:
+The definition audit checks that a reader is introduced to motives, the
+difference from ordinary rational homology, Tate and sign-Artin objects,
+totalization, strict hearts, frames, coproducts, endpoint extensions, and the
+specialization interface before they are used. A machine-readable coverage
+file classifies every labeled proof item as Lean-checked, external, mixed
+Lean/external, or an explanatory definition.
+An independent contract-parity manifest assigns every field of the six Lean
+trust structures to E1--E8; the checker currently closes all 77 fields.
 
-- unresolved citations, references, duplicate labels, missing glyphs, and
-  layout warnings;
-- bibliography-key coverage and absence of unused entries;
-- local Markdown and Sphinx links;
-- absolute local paths, secret-like material, draft placeholders, and build
-  debris;
-- byte-for-byte PDF reproducibility in an isolated directory; and
-- agreement of the checked-in artifact with the release manifest.
+The release checks cover bibliography keys, TeX references and log warnings,
+Markdown links, source hygiene, strict Sphinx documentation, Lean build and
+axiom output, manuscript-contract coverage, isolated PDF reproducibility, and
+manifest page count and digest.
 
-The 27 September release candidate passed the complete `make verify` target.
-The title and contents, principal theorem, final suspension-removal argument,
-and bibliography pages were also rendered and inspected visually; no
-release-blocking defect was found.
-
-The exact commands and artifact digest are recorded in
-[`RELEASE_MANIFEST.md`](RELEASE_MANIFEST.md).
+The resulting status is deliberately two-level: the conditional implication
+is self-contained and machine checked; the unconditional theorem remains open
+in this repository until E2--E5 are constructed.

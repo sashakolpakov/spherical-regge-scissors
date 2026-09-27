@@ -1,55 +1,68 @@
 The motivic core
 ================
 
-What “motive” means in this proof
----------------------------------
+What “motive” means here
+------------------------
 
-A motive is used here as an object in a triangulated category in which an
-algebraic variety has a functorial cohomological avatar.  Localization turns
-a closed subvariety and its complement into an exact triangle; purity
-identifies the closed term with a Tate twist when the embedding is regular.
-These operations let the proof encode a quadric together with its coordinate
-faces without choosing a particular cohomology theory.
+A motive is intended here as an object in a triangulated category in which an
+algebraic variety has a functorial cohomological avatar.  Localization turns a
+closed subvariety and its complement into an exact triangle; purity identifies
+the closed term with a Tate twist when the embedding is regular.  This retains
+extension data independently of a particular realization.
 
-The object attached to the tetrahedron
---------------------------------------
+It cannot be replaced by an ordinary complex of rational vector spaces.
+Rational vector spaces form a semisimple category, so the endpoint
+``Ext`` group would vanish for the wrong formal reason and discard exactly the
+obstruction the proof must control.
 
-The universal Gram quadric, the coordinate simplex, and all their
-intersections form an alternating face diagram.  Its stable totalization,
-with the standard weight-two normalization, is the single relative motive
-used in the proof.  Splitting the quadric and its faces leaves only
-:math:`\mathbb Q(0)`, five ordinary copies and one Artin-sign copy of weight
-one, and :math:`\mathbb Q(2)`.
+The intended object
+-------------------
+
+The universal Gram quadric, coordinate simplex, and all their intersections
+form an alternating face diagram.  The intended weight-two coefficient is the
+framed stable totalization of that diagram after internal duality and a Tate
+twist.  E2 supplies the relative coefficient and its pullback; E3 supplies the
+strict filtration with intended graded pieces
+
+.. math::
+
+   \mathbb Q(0),\qquad
+   \mathbb Q(1)^{\oplus 5}\oplus\chi(1),\qquad
+   \mathbb Q(2).
+
+The manuscript defines Tate and sign-Artin objects, totalization, frames, and
+the required heart so these inputs have precise content.  It does not build
+the ambient relative motivic category from foundations.
 
 Frames and the coproduct
 ------------------------
 
-A frame chooses a map from the bottom Tate object and a map to the top Tate
-object.  Its coefficient remembers the intervening extension data.  Cutting
-the three-step weight filtration in the middle gives the reduced coproduct
+A frame chooses a bottom map from :math:`\mathbb Q(2)` and a top map to
+:math:`\mathbb Q(0)`.  Cutting the strict three-step filtration in the middle
+produces a reduced coproduct.  E4 asserts the exact relative formula
 
 .. math::
 
-   \overline\Delta[Q,M]=\sum_e L_e\otimes A_e.
+   \overline\Delta[Q,M]=\sum_e L_e\otimes A_e,
 
-The first factor is the complementary edge-length coordinate and the second
-is the angle coordinate.  The manuscript derives this order and the
-complementary indexing from the dual face geometry and an explicit Schur
-complement.
+including factor order, complementary indexing, and normalized trace in the
+sign-Artin channel.  It also states the commuting specialization square into
+the field-level coproduct.  Lean proves the subsequent Regge tensor
+cancellation and derives fibre primitivity through that square; it does not
+derive E4 from a plain chain complex.
 
 Why zero coproduct is enough
 ----------------------------
 
-For a category with only these three weight levels, the manuscript proves
-directly that the kernel of the reduced coproduct is the group of two-step
-extensions between the bottom and top pieces.  Therefore the universal Regge
-difference, whose coproduct vanishes, lies in
+E3 identifies the primitive kernel with the endpoint group
 
 .. math::
 
    \operatorname{Ext}^1(\mathbb Q(0),\mathbb Q(2))
-   =H^1(U,\mathbb Q(2)).
+   =H^1(U,\mathbb Q(2))
 
-The rational chart makes the function field of :math:`U` purely
-transcendental over :math:`\mathbb Q`.  The imported low-degree invariance and
-Borel rank calculation reduce this group to zero.
+and asserts its vanishing.  Garkusha's low-degree invariance and Borel's rank
+calculation motivate the last equality, while the relative strict-heart and
+heart-to-derived comparisons remain explicitly inside E3.  Given this
+identification, Lean checks that zero coproduct forces the universal defect to
+be zero.
