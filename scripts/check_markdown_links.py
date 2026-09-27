@@ -11,7 +11,10 @@ from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 LINK = re.compile(r"\[[^\]]*\]\(([^)]+)\)")
-SKIP_PARTS = {".git", "_build", "__pycache__"}
+# Only repository-authored Markdown belongs to this audit.  In particular,
+# a fresh Lean checkout materializes third-party packages under `formal/.lake`;
+# their links are neither part of this repository nor stable relative to it.
+SKIP_PARTS = {".git", ".lake", "_build", "__pycache__"}
 
 
 def markdown_files() -> list[Path]:
