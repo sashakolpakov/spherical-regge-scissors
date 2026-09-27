@@ -59,7 +59,9 @@ The final pdfTeX log contains no font-expansion notice, undefined citation or
 reference, duplicate label, missing glyph, overfull box, or underfull box
 warning; the BibTeX log has no warning.
 
-At this pre-publication stage, `make verify` has completed successfully in the
-working tree.  Fresh-clone reconstruction and hosted GitHub checks remain
-explicit publication gates in `PRE_RELEASE_CHECKLIST.md`; this paragraph will
-record them only after they have run against the exact committed candidate.
+The same `make verify` target completed successfully both in a clean local
+clone of the committed tree and in a fresh HTTPS clone of the public GitHub
+repository, after reconstructing the pinned dependency tree and official
+Mathlib cache.  The hosted Lean and Documentation workflows both succeeded;
+the repository, deployed strict Sphinx guide, and Lean-formalization page were
+then retrieved from their public URLs with HTTP 200 responses.

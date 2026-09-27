@@ -57,8 +57,8 @@ files intended for publication.
 
 ## Publication
 
-- [ ] Commit the exact verified tree on `main`.
-- [ ] Create and push the public `sashakolpakov/spherical-regge-scissors`
+- [x] Commit the exact verified tree on `main`.
+- [x] Create and push the public `sashakolpakov/spherical-regge-scissors`
   repository.
-- [ ] Repeat the release checks from a fresh clone of the committed tree.
-- [ ] Deploy and retrieve the strict Sphinx guide through GitHub Pages.
+- [x] Repeat the release checks from a fresh clone of the committed tree.
+- [x] Deploy and retrieve the strict Sphinx guide through GitHub Pages.

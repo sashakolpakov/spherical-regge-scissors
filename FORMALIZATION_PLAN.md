@@ -27,7 +27,7 @@ formal project must contain no `sorry`, `admit`, project `axiom`, `opaque`,
   Artin descent, and the fibre comparison are not silently treated as
   automatic consequences of ordinary homology.
 - [x] Add automated source, axiom-output, manuscript-contract, and build checks.
-- [ ] Build Lean, rebuild the manuscript and documentation, reproduce the PDF,
+- [x] Build Lean, rebuild the manuscript and documentation, reproduce the PDF,
   and pass the complete release verification from a fresh clone.
 
 ## Trust boundary

@@ -64,3 +64,13 @@ manifest page count and digest.
 The resulting status is deliberately two-level: the conditional implication
 is self-contained and machine checked; the unconditional theorem remains open
 in this repository until E2--E5 are constructed.
+
+## 27 September 2026: clean-clone and public verification
+
+The committed candidate was rebuilt first in a clean local clone and then in
+a fresh HTTPS clone of the public repository.  The first run exposed that the
+Markdown-link audit descended into Lake's generated third-party package tree;
+the checker was narrowed to repository-authored Markdown and the complete
+release target was rerun successfully in both clones.  Both hosted GitHub
+workflows completed successfully, and the repository, deployed guide, and
+Lean-formalization page were retrieved over HTTPS.
