@@ -1,0 +1,10 @@
+.theorem {
+  border-left: 0.25rem solid var(--color-brand-primary);
+  padding: 0.8rem 1rem;
+  background: var(--color-background-secondary);
+}
+
+.proof-chain {
+  border-left: 0.2rem solid var(--color-admonition-title-background--note);
+  padding-left: 1rem;
+}

@@ -1,0 +1,605 @@
+\section{The universal Regge defect and weight-two rigidity}
+\label{cp:sec-relative-rigidity}
+
+We now apply the language of Section~\ref{cp:sec-motivic-dictionary} to the
+universal pair over the rational open \(U\) constructed in
+Section~\ref{cp:sec-phase-charts}.  The argument has two independent parts.
+First we calculate the weight pieces of the two relative quadric motives.
+Then we calculate their middle coproduct and use a vanishing theorem to show
+that no endpoint extension remains.
+
+Fix the physical point chosen in
+Proposition~\ref{cp:prop-physical-point-on-chart}.  From now on we replace
+\(U\), if necessary, by a smaller Regge-stable principal open which still
+contains that point.  We require on this open that every cross-ratio used
+below is a regular unit and that the finitely many root covers used to
+choose isotropic directions and half-phases are finite \'etale.  At the
+physical point the relevant phases are nonzero and the face sections are
+smooth, so none of these additional conditions removes the point.  This
+shrinking changes neither the function field in
+\eqref{cp:eq-universal-open-function-field} nor the birational motivic
+cohomology calculation.
+
+\subsection{Why the dual quadrics and all their faces split}
+
+Let \(G\) and \(G^R\) be the two universal angle Gram matrices over \(U\),
+with their common determinant root \(w\).  The quadric simplex naturally
+attached to \(G\) uses the quadric \(Q_{G^{-1}}\).  Goncharov's projective
+duality, which is the antipode in the quadric-scissors Hopf algebra, replaces
+it by the coordinate simplex
+\begin{equation}
+ Q_G:\quad z^tGz=0\subset\mathbf P^3_U
+ \label{cp:eq-dual-quadric}
+\end{equation}
+with the same four ordered coordinate hyperplanes.  It is enough to kill
+the dual defect: the antipode is an involution.  We use the dual because its
+coordinate sections can be read directly from the entries of \(G\).
+
+A quadratic form over a scheme is called \emph{split} if it is a direct sum
+of hyperbolic planes, locally represented by matrices
+\(\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)\).  A split
+quadric surface is fibrewise \(\mathbf P^1\times\mathbf P^1\), and its two
+projections are its two rulings by lines.
+
+\begin{lemma}[Splitting of the universal coordinate strata]
+\label{cp:lem-split-strata}
+The quadrics \(Q_G\) and \(Q_{G^R}\) are split over \(U\).  Every coordinate
+plane section is a split conic.  Of the six coordinate line sections, five
+are split degree-two schemes; the remaining section is the common finite
+\'{e}tale cover \(U_p\to U\) from \eqref{cp:eq-p-cover}.
+\end{lemma}
+
+\begin{proof}
+For a unit \(u\), put \(g=-(u+u^{-1})/2\).  The vector \((1,u)\) is
+isotropic for the binary form
+\[
+ \begin{pmatrix}1&g\\g&1\end{pmatrix},
+\]
+because \(1+2gu+u^2=0\).  In particular, the binary block of \(G\)
+controlled by the phase \(q\) is a hyperbolic plane.
+
+Orthogonally eliminate this nondegenerate binary block in the rank-four
+quadratic bundle.  On the remaining two coordinate directions the
+restricted form is its binary Schur complement \(C\).  This complement is
+oriented by the ordered trivial bundle and the ordered isotropic basis of
+the \(q\)-plane.  In the notation of
+Section~\ref{cp:sec-phase-charts},
+\[
+ \det G=w^2,
+ \qquad
+ \det\begin{pmatrix}1&y\\y&1\end{pmatrix}=1-y^2=-s^2.
+\]
+The determinant formula for a Schur complement therefore gives
+\[
+ \det C=-\left(\frac ws\right)^2.
+\]
+Write \(t=w/s\), a unit on \(U\).  In an oriented local basis of the
+complement put
+\[
+ J_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \qquad J=t^{-1}J_0C.
+\]
+For every symmetric binary matrix \(C\),
+\((J_0C)^2=-\det(C)I\).  Hence \(J^2=I\), and a direct multiplication gives
+\(J^tC+CJ=0\).  Also \(\operatorname{tr}J=0\), so the two idempotents
+\((1\pm J)/2\) have rank one and their images are line bundles.  If
+\(Jv=\pm v\), the skew-adjoint identity gives
+\(C(v,v)=-C(Jv,Jv)=-C(v,v)\), so each eigenline is isotropic.
+Nondegeneracy of \(C\) then pairs the two eigenlines perfectly.  Thus the
+complement, and
+hence the rank-four form, is hyperbolic.  This proves that \(Q_G\) is split.
+The mate has the same \(q,s,w\), so the identical argument applies to
+\(Q_{G^R}\).
+
+Every coordinate rank-three restriction contains a binary block controlled
+by at least one of \(a,b,c,d,q\).  It therefore has an isotropic line.  A
+smooth conic with a rational point is split, proving the plane-section
+claim.  A coordinate rank-two restriction has two isotropic points.  The
+phases \(a,b,c,d,q\) display those points for five restrictions.  The last
+restriction is defined by \(p+p^{-1}=-2x\), and its two isotropic points are
+defined precisely over \(U_p\).  Regge fixes \(p,q\) and replaces the other
+four phases by \(\tau/a,\tau/b,\tau/c,\tau/d\), so the same description
+holds for the mate.
+\end{proof}
+
+\subsection{The three weight pieces}
+
+For a coordinate line \(M_I\cong\mathbf P^1_U\), let
+\(D_I=Q_G\cap M_I\).  It is a finite \'{e}tale scheme of degree two.  Its
+motive has a constant part and a reduced part.  With \(\eta\) denoting the
+unit and \(\Tr\) the trace, define the latter as the idempotent image
+\begin{equation}
+ \widetilde M(D_I)
+ =\operatorname{im}\left(1-\frac12\eta\Tr:M(D_I)\longrightarrow M(D_I)
+                  \right).
+ \label{cp:eq-reduced-artin}
+\end{equation}
+If \(D_I=U\amalg U\), this is a copy of the constant motive \(\Q_U\),
+carrying the difference of the two points.  For the nonsplit \(p\)-section
+it is the sign Artin motive \(\chi\) of the double cover \(U_p/U\).
+
+\begin{proposition}[Weight calculation for the quadric face motive]
+\label{cp:prop-weight-calculation}
+For \(Q=Q_G\) or \(Q_{G^R}\), the normalized relative motive
+\(\mathfrak m_U(Q,M)\) of Definition~\ref{cp:def-face-motive} has a
+three-step Postnikov tower with pure cones
+\begin{equation}
+ \begin{aligned}
+  \gr_F^0\mathfrak m_U(Q,M)&=\Q_U(0),\\
+  \gr_F^1\mathfrak m_U(Q,M)&=
+       \bigoplus_{|I|=2}\widetilde M(D_I)(1),\\
+  \gr_F^2\mathfrak m_U(Q,M)&=\Q_U(2).
+ \end{aligned}
+ \label{cp:eq-three-graded-pieces}
+\end{equation}
+After the gluing in Lemma~\ref{cp:lem-three-weight-rigidity}, the motive lies
+in the resulting heart and this tower is its strict three-step filtration.
+Here \(F^0\supset F^1\supset F^2\supset F^3=0\) is the decreasing
+Tate-degree filtration: \(\Q_U(2)=F^2\) is the bottom subobject and
+\(\Q_U(0)=F^0/F^1\) is the top quotient.
+Thus the middle piece is a sum of five copies of \(\Q_U(1)\) and one copy
+of \(\chi(1)\).  The ruling selected by \(w\) gives the
+\(\Q_U(0)\)-frame, and the orientation of the four ordered faces gives the
+\(\Q_U(2)\)-frame.
+\end{proposition}
+
+\begin{proof}
+We give the calculation because it is the only place where the geometric
+face complex is converted into weights.  Localization and the
+projective-bundle formula give
+\begin{align}
+ M_U(\mathbf P^3_U\setminus Q)
+   &\simeq \Q_U\oplus\Q_U(2)[3],
+ \label{cp:eq-motive-open-quadric}\\
+ M_U(\mathbf P^2_U\setminus C)&\simeq\Q_U
+   &&(C\text{ a split smooth conic}),
+ \label{cp:eq-motive-open-conic}\\
+ M_U(\mathbf P^1_U\setminus D_I)
+   &\simeq\Q_U\oplus\widetilde M(D_I)(1)[1],
+ \label{cp:eq-motive-punctured-line}\\
+ M_U(\mathbf P^0_U)&\simeq\Q_U.
+ \label{cp:eq-motive-point}
+\end{align}
+Here is the relative calculation behind these formulas.  A split quadric
+surface has the projective-bundle motive
+\[
+ M_U(Q)=\Q_U\oplus\Q_U(1)[2]^{\oplus2}\oplus\Q_U(2)[4].
+\]
+In the Gysin map to \(M_U(\mathbf P^3_U)\), the two middle ruling classes
+map by their sum to the unique \(\Q_U(2)[4]\)-class; their difference is
+the primitive class.  The bottom and top maps are multiplication by the
+nonzero geometric degrees and split over \(\Q\).  The localization
+triangle therefore leaves exactly \(\Q_U\) and the primitive
+\(\Q_U(2)[3]\).  The same argument for a split conic cancels its two
+nonconstant projective-bundle terms.  For
+\(D_I\subset\mathbf P^1_U\), the trace summand of \(M_U(D_I)\) maps by
+degree \(2\), while the reduced idempotent summand maps to zero; shifting
+the latter across the localization triangle gives
+\(\widetilde M(D_I)(1)[1]\).  Thus the displayed decompositions are
+relative over \(U\), not merely fibrewise identities.
+
+For example, the localization triangle for the two-point divisor
+\(D_I\subset\mathbf P^1_U\) splits its motive into the trace part and the
+reduced summand \eqref{cp:eq-reduced-artin}.  In the conic and binary
+localization triangles, the map on the constant degree-two part is
+multiplication by the geometric degree \(2\), and is therefore invertible
+over \(\Q\).  The rank-one primitive summand in
+\eqref{cp:eq-motive-open-quadric} is the difference of the two ruling
+classes; the orientation root \(w\) selects its generator, hence its sign
+and frame.
+
+Apply the dual-and-twist operation
+\[
+ D_2(-)=\underline{\operatorname{Hom}}(-,\Q_U)(2)
+\]
+appearing in Definition~\ref{cp:def-face-motive}.  Trace self-duality of a
+degree-two \'{e}tale scheme gives
+\begin{align*}
+ D_2\bigl(M_U(\mathbf P^3_U\setminus Q)\bigr)&\simeq
+      \Q_U(2)\oplus\Q_U(0)[-3],\\
+ D_2\bigl(M_U(\mathbf P^2_U\setminus C)\bigr)&\simeq\Q_U(2),\\
+ D_2\bigl(M_U(\mathbf P^1_U\setminus D_I)\bigr)&\simeq
+      \Q_U(2)\oplus\widetilde M(D_I)(1)[-1],\\
+ D_2\bigl(M_U(\mathbf P^0_U)\bigr)&\simeq\Q_U(2).
+\end{align*}
+The cohomological bookkeeping is short.  The exceptional ambient summand
+occurs in face-complex degree three, so totalization changes
+\(\Q_U(0)[-3]\) to \(\Q_U(0)\).  Each exceptional line summand occurs in
+degree one, changing \(\widetilde M(D_I)(1)[-1]\) to
+\(\widetilde M(D_I)(1)\).  The remaining constant summands are handled by
+their cellular differential, as follows.
+The constant \(\Q_U(2)\)-summands form the dual unaugmented cellular
+complex of the ordered tetrahedron,
+\[
+ \Q_U(2)\longrightarrow\Q_U(2)^4\longrightarrow
+ \Q_U(2)^6\longrightarrow\Q_U(2)^4.
+\]
+It has one surviving copy of \(\Q_U(2)\); all other constant terms cancel.
+The face degrees cancel the displayed shifts on the exceptional ambient and
+line summands.  The resulting Postnikov tower therefore has the three cones
+in \eqref{cp:eq-three-graded-pieces}.  Lemma
+\ref{cp:lem-split-strata} identifies the six reduced Artin terms.  The two
+frames are exactly the two extreme classes in the relative cohomology
+construction, as explained after Definition~\ref{cp:def-framed}.
+\end{proof}
+
+\subsection{A three-weight category and its primitive kernel}
+
+The proof does not assume the existence of a category of all mixed motives
+over \(U\).  We use only the finite triangulated subcategory generated by
+the objects which have just appeared.  Put
+\begin{equation}
+ \mathcal P_0=\langle\Q_U(0)\rangle,
+ \qquad
+ \mathcal P_1=\langle\Q_U(1),\chi(1)\rangle,
+ \qquad
+ \mathcal P_2=\langle\Q_U(2)\rangle.
+ \label{cp:eq-pure-categories}
+\end{equation}
+The brackets mean finite direct sums and direct summands.  The middle
+category is the rational Artin category generated by the degree-two cover.
+If \(U_p\) is connected it is the subcategory generated by the trivial and
+sign representations of its group of order two; if the cover splits, the
+two displayed generators are isomorphic copies of the trivial object.
+Either way it is semisimple (by Maschke's theorem in the connected case).
+
+\begin{lemma}[Three-weight rigidity]
+\label{cp:lem-three-weight-rigidity}
+The triangulated subcategory of \(\DM(U)_\Q\) generated by the three
+categories in \eqref{cp:eq-pure-categories} has a bounded heart
+\(\mathcal M_U^{[0,2]}\), namely their extension closure.  The two motives
+of Proposition~\ref{cp:prop-weight-calculation} belong to this heart.
+For rational framed classes one has
+\begin{equation}
+ \ker\overline\Delta_{0,2}
+ \;=\;
+ \Ext^1_{\mathcal M_U^{[0,2]}}
+       (\Q_U(0),\Q_U(2))
+ \;=\;H^1(U,\Q(2))
+ \;=\;0.
+ \label{cp:eq-primitive-kernel-zero}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We first justify the heart.  The semisimple gluing criterion
+\cite[Chapter~5, Section~1]{Goncharov1999} asks for negative morphisms
+between the pure generators to vanish.  Equal-degree groups are direct
+summands of \(H^m(W,\Q(0))\) for \(W=U\) or the finite \'{e}tale cover
+\(U_p\), and vanish for \(m<0\).  Across one increasing Tate degree they
+are direct summands of \(H^m(W,\Q(1))\), which vanish for \(m\leq0\)
+because \(\Q(1)=\Gm[-1]\).  Morphisms in the decreasing direction have a
+negative Tate twist and vanish by effectivity and cancellation: after
+passing to a finite \'{e}tale cover to remove an Artin factor, they are
+motivic cohomology groups of negative codimension, hence zero in the
+higher-Chow description.  The only
+two-step increasing group is
+\[
+ \operatorname{Hom}_{\DM(U)_\Q}
+   (\Q_U(0),\Q_U(2)[m])=H^m(U,\Q(2)).
+\]
+
+Let \(K=\Q(t_1,\ldots,t_6)\) be the function field of either rational
+chart.  For \(m\leq1\), Garkusha's birational result and his
+pure-transcendental invariance theorem give
+\begin{equation}
+ H^m(U,\Q(2))\cong H^m(K,\Q(2))
+ \cong H^m(\Q,\Q(2)).
+ \label{cp:eq-garkusha-reduction}
+\end{equation}
+Here we use Corollaries~3.10, 3.11, 3.13 and Theorem~3.14 of
+\cite{Garkusha2023}.  The groups on the right vanish for \(m\leq0\) by
+Beilinson--Soul\'{e} vanishing over \(\Q\).  This verifies the remaining
+negative-Hom condition and constructs the finite heart.
+
+For \(m=1\), motivic cohomology identifies the same group with the
+weight-two part of algebraic \(K\)-theory:
+\[
+ H^1(\Q,\Q(2))
+ =\gr_2^\gamma K_3(\Q)\otimes\Q.
+\]
+Borel's rank theorem says that \(K_3(\Q)\) has rational rank zero, so this
+group vanishes.
+
+We also need the strict filtration hypotheses, not merely the existence of
+the heart.  Same-level extension groups are direct summands of
+\(H^1(W,\Q(0))\), which is zero by the higher-Chow description.
+For \(j>i\), both
+\(\operatorname{Hom}(\mathcal P_j,\mathcal P_i)\) and
+\(\operatorname{Ext}^1(\mathcal P_j,\mathcal P_i)\) have negative Tate
+twist and vanish by the preceding effectivity argument.  The degree-zero
+maps between distinct increasing levels were already shown to vanish.
+Consequently extensions can be reordered uniquely by Tate degree; the
+heart has the functorial strict filtration required in
+Lemma~\ref{cp:lem-three-level-framed}.
+
+That lemma identifies the primitive kernel with
+\(\Ext^1_{\mathcal M_U^{[0,2]}}(\Q_U(0),\Q_U(2))\).
+The heart-to-derived comparison in degree one identifies this with
+\[
+ \operatorname{Hom}_{\DM(U)_\Q}
+ \bigl(\Q_U(0),\Q_U(2)[1]\bigr)=H^1(U,\Q(2)),
+\]
+which the Garkusha--Borel calculation has just shown to be zero.  This
+proves every equality in \eqref{cp:eq-primitive-kernel-zero}.
+\end{proof}
+
+\subsection{The Regge coproduct calculation}
+
+For an oriented quadric simplex in projective three-space, Goncharov's
+middle coproduct has one term for each of its six codimension-two faces.
+Under the standard weight-one identification with multiplicative units, it
+is
+\begin{equation}
+ \overline\Delta\,[Q,M]
+   =\sum_e L_e\otimes A_e.
+ \label{cp:eq-angle-length-coproduct}
+\end{equation}
+Here \(L_e\) and \(A_e\) are the oriented length and angle cross-ratios for
+the same physical edge \(e\).  The order matters because we are working on
+the projectively dual quadric \(Q_G\).  For complementary pairs
+\(\{i,j,k,l\}=\{0,1,2,3\}\), restriction to the coordinate line
+\(M_k\cap M_l\) has binary matrix
+\(G_{\{i,j\},\{i,j\}}\) and gives the angle factor
+\(A_{ij}\).  The quotient by that line has the complementary binary Schur
+form and gives the length factor \(L_{kl}\).  Since the facets \(i,j\) meet
+at the physical edge \(kl\), these are the two factors belonging to that
+edge.  Goncharov's coproduct puts the quotient factor first, hence
+\(L_{kl}\otimes A_{ij}\).
+Indeed, if \(S\) denotes that Schur form on the quotient coordinates
+\(k,l\), block inversion gives
+\(S^{-1}=(G^{-1})_{\{k,l\},\{k,l\}}\).  The normalized dual vectors to
+the facet normals are the vertices, so
+\[
+ \frac{(G^{-1})_{kl}}
+      {\sqrt{(G^{-1})_{kk}(G^{-1})_{ll}}}=\cos\ell_{kl}.
+\]
+Inverting a symmetric binary matrix negates its normalized off-diagonal
+entry.  Therefore the normalized off-diagonal entry of \(S\) is
+\(-\cos\ell_{kl}\), exactly the same binary form that produces the length
+cross-ratio below.
+The signs are induced by the chosen ruling of \(Q\); there is no additional
+alternating edge sign.  This is Goncharov's definition of the coproduct,
+together with its Poincar\'{e}-dual description
+\cite[the \(S_2(\C)\) cross-ratio example, the coproduct definition preceding
+Theorem~4.5, and Proposition~4.9]{Goncharov1999}.
+
+We use the ordered cross-ratio convention
+\[
+ r(z_1,z_2,z_3,z_4)
+ =\frac{(z_1-z_3)(z_2-z_4)}
+        {(z_1-z_4)(z_2-z_3)}.
+\]
+Take affine slope on an oriented real two-plane.  The ordered isotropic
+directions are then \(-\mathrm i,\mathrm i\), while two real rays meeting
+at angle \(\phi\) may be written \(0,\tan\phi\).  A direct calculation gives
+\[
+ r(-\mathrm i,\mathrm i,0,\tan\phi)
+   =\frac{1+\mathrm i\tan\phi}{1-\mathrm i\tan\phi}
+   =e^{2\mathrm i\phi}.
+\]
+The homogeneous determinant formula for the cross-ratio gives the same
+identity when one of the slopes is infinite.  Swapping the two isotropic
+directions inverts the answer.
+
+Consequently, if \(e\) is a physical edge, \(\vartheta_e\) its interior
+dihedral angle, and \(\ell_e\) its length, then with the induced orderings,
+\begin{equation}
+ A_e=e^{2\mathrm i\vartheta_e},
+ \qquad
+ L_e=e^{2\mathrm i\ell_e}.
+ \label{cp:eq-cross-ratio-phases}
+\end{equation}
+The two induced orientations are coupled: with the auxiliary induced
+orientation held fixed, reversing the global ruling reverses exactly one of
+them, so every tensor term changes sign, as does the oriented
+\(S_4\)-generator.  In the proof we keep the ruling selected by \(w\) fixed
+throughout.
+
+Let \([\mathfrak m_G]\) and \([\mathfrak m_{G^R}]\) denote the two
+\((0,2)\)-framed coefficient classes of the normalized relative motives.
+Their \emph{universal dual Regge defect} is
+\[
+ \delta_U^\vee=[\mathfrak m_G]-[\mathfrak m_{G^R}]
+ \in A\bigl(\Q_U(0),\Q_U(2)\bigr).
+\]
+The symbol \(\overline\Delta_{0,2}\) below is the reduced coproduct in this
+relative coefficient coalgebra.  Its specialization is compared only
+afterwards with the reduced coproduct in Goncharov's quadric-scissors
+coalgebra.
+
+\begin{lemma}[Regge invariance of the middle coproduct]
+\label{cp:lem-coproduct-zero}
+Let \(\delta_U^\vee\) be the difference of the two framed dual quadric
+motives associated with \(G\) and \(G^R\).  Then
+\[
+ \overline\Delta_{0,2}(\delta_U^\vee)=0
+\]
+over \(U\), including the possibly nonsplit \(p\)-summand.
+Moreover, for every complex point \(s:\Spec\C\to U\), the corresponding
+dual quadric-scissors defect satisfies
+\[
+ \overline\Delta(\delta_s^\vee)=0
+ \quad\text{in}\quad
+ \bigl(S_2(\C)\otimes S_2(\C)\bigr)\otimes\Q.
+\]
+\end{lemma}
+
+\begin{proof}
+The terms for the two fixed opposite edges agree individually, because
+Regge fixes both their angle and length.  For the four moving terms use the
+facet-pair order
+\[
+ (02,12,13,03)
+\]
+for the angle factors, and attach to them the complementary physical-edge
+lengths in the order
+\[
+ (13,03,02,12).
+\]
+The second list is again a cyclic order around the two fixed opposite
+edges.  Thus Theorem~\ref{cp:thm-regge-input} applies the same matrix \(R\)
+to the two lists, while the entries with labels \(01\) and \(23\) are the
+two fixed terms.  On a finite \'{e}tale cover choose half-phases
+\[
+ A_i=B_i^2,
+ \qquad L_i=Y_i^2.
+\]
+Here the cover also includes the roots needed to recover lengths from the
+angle Gram matrix.  To see explicitly that these roots are algebraic, let
+\(C_{ij}=\operatorname{Cof}_{ij}(G)\).  If \(i,j\) are the endpoints of a
+geometric edge, the dual-basis construction of the vertices gives, with a
+sign fixed by the physical branch,
+\[
+ \cos\ell_{ij}
+   =\frac{C_{ij}}{\sqrt{C_{ii}C_{jj}}}.
+\]
+Jacobi's complementary-minor identity says
+\[
+ C_{ii}C_{jj}-C_{ij}^2
+ =\det(G)\det G_{\widehat{\{i,j\}},\widehat{\{i,j\}}},
+\]
+If \(\{k,l\}\) is the complementary pair, then
+\[
+ \det G_{\widehat{\{i,j\}},\widehat{\{i,j\}}}
+ =1-g_{kl}^2
+ =-\left(\frac{u_{kl}-u_{kl}^{-1}}2\right)^2,
+\]
+where \(g_{kl}=-(u_{kl}+u_{kl}^{-1})/2\).  Thus the square root of this
+minor is already supplied by the known angle phase.  The identity therefore
+expresses \(\sin\ell_{ij}\), hence
+\(Y_{ij}=e^{\mathrm i\ell_{ij}}\), using \(w\), square roots of the
+nonzero principal cofactors, and the phase belonging to the complementary
+binary angle section.  All radicands are units on our chosen open, so
+adjoining these finitely many roots gives a finite \'{e}tale cover.  If the
+fixed cover \(U_p\to U\) is connected, include it as one more factor in
+this fibre product.
+
+Choose the connected component \(V\) of the resulting cover which contains the
+physical choices \(B_i=e^{\mathrm i\theta_i}\) and
+\(Y_i=e^{\mathrm i\ell_i}\).  The map \(V\to U\) is surjective: a connected
+component of a finite \'{e}tale cover has open-and-closed image, and \(U\)
+is connected.  When \(U_p\) is connected, the same argument shows that the
+induced map \(V\to U_p\) is surjective.  There is a real open neighbourhood
+\(\Omega\) of the given
+tetrahedron on which both Gram matrices remain positive definite.  Its
+phase image is a nonempty maximal totally real open subset of the
+six-dimensional complex manifold \(U(\C)\): algebraically, the full phase
+orientation cover maps finitely and dominantly to \(U\), forgetting only
+the choice between \(p\) and \(p^{-1}\), and the six real angles are local
+coordinates on the physical chamber.  A holomorphic function which
+vanishes there is zero by the one-variable identity theorem applied
+successively in local analytic coordinates; hence the image is Zariski
+dense.  Choose the square-root branches analytically over a smaller simply
+connected part of \(\Omega\).  Their lift
+\(\widetilde\Omega\subset V(\C)\) is a nonempty maximal totally real open
+set in the complex manifold \(V(\C)\).  A regular function on the integral
+variety \(V\) which vanishes on \(\widetilde\Omega\) is holomorphic in local
+coordinates and hence vanishes identically by the same successive identity
+theorem.  Thus \(\widetilde\Omega\) is Zariski dense in the chosen
+component \(V\).
+
+Let \(R=\tfrac12J_4-I_4\) be the Regge matrix and put
+\(H=2R=J_4-2I_4\).  The angle and length parts of the Regge theorem give,
+first on the real spherical chamber,
+\begin{equation}
+ A_i^R=\prod_jB_j^{H_{ij}},
+ \qquad
+ L_i^R=\prod_jY_j^{H_{ij}}.
+ \label{cp:eq-monomial-angle-length}
+\end{equation}
+Both sides are algebraic functions on \(V\).  Since \(\widetilde\Omega\) is Zariski
+dense there, the identities hold algebraically over its function field.
+We write a multiplicative group additively inside a tensor product; in
+particular
+\[
+ [u^m]\otimes[v^n]=mn\,[u]\otimes[v].
+\]
+Since \(H^tH=4I_4\), this convention gives
+\[
+ \begin{aligned}
+  \sum_i L_i^R\otimes A_i^R
+   &=\sum_{i,j,k}H_{ik}H_{ij}\,Y_k\otimes B_j\\
+   &=4\sum_jY_j\otimes B_j
+    =\sum_jL_j\otimes A_j.
+ \end{aligned}
+\]
+Changing a chosen square root contributes only two-torsion, which
+disappears over \(\Q\).
+
+All functions in this tensor identity are regular units after the shrinking
+made at the start of this section.  For an integral scheme \(V\), the map
+\(\mathcal O(V)^*\hookrightarrow K(V)^*\) is injective, and remains so after
+tensoring with \(\Q\); the same is true of its tensor square over \(\Q\).
+Consequently the identity proved in the function field is already an
+identity of the relative weight-one coefficient objects on the cover.
+
+We finally descend the equality.  If \(V\to U\) is a finite \'{e}tale
+cover with structure map \(f\), then on units
+\[
+ N_{V/U}\circ f^*=[\deg(V/U)].
+\]
+Thus \(f^*\) on rationalized units is injective, and its tensor square is
+injective as well.  This descends the equality formed by the five split
+channels (the four moving terms and the fixed \(q\)-term).  If \(U_p\) is
+split, the \(p\)-channel is a sixth ordinary-unit channel and the same
+argument with \(V\to U\) finishes the descent.  Suppose instead that
+\(U_p\) is connected.  The surjective finite \'etale map \(V\to U_p\) has
+an injective pullback on rationalized units by its norm, so the fixed
+\(p\)-term first descends to \(U_p\).  For the deck involution \(\sigma\) of
+\(\pi:U_p\to U\), put
+\[
+ e_-=\frac{1-\sigma}{2},\qquad
+ \chi=e_-M_U(U_p).
+\]
+Using \(\pi^*\chi\cong\Q_{U_p}\), pullback on the two half-frame spaces is
+\begin{align*}
+ \pi^*:A_U(\Q(0),\chi(1))
+     &\longrightarrow A_{U_p}(\Q(0),\Q(1)),\\
+ \pi^*:A_U(\chi(1),\Q(2))
+     &\longrightarrow A_{U_p}(\Q(1),\Q(2)).
+\end{align*}
+On either space, the normalized twisted trace---the \(\chi\)-isotypic
+projection of transfer, divided by two---is a left inverse: trace after the
+adjunction unit is multiplication by the degree, namely two, on the sign
+summand.  The tensor product of these
+two left inverses proves injectivity on the complete \(p\)-term.  That term
+is identical for the two mates on \(U_p\), since Regge fixes both the
+\(p\)-angle and its complementary length.  Its difference therefore
+vanishes already over \(U\).  Equation
+\eqref{cp:eq-angle-length-coproduct} now proves the relative motivic
+assertion.
+
+The calculation has taken place in the rationalized multiplicative unit
+groups themselves, before applying any period or regulator.  Goncharov's
+cross-ratio isomorphism identifies
+\(S_2(\C)\otimes\Q\) with \(\C^*\otimes\Q\), and
+\eqref{cp:eq-angle-length-coproduct} is also the coproduct formula in his
+quadric-scissors Hopf algebra.  Pulling the same unit identity to any
+complex point therefore proves
+\(\overline\Delta(\delta_s^\vee)=0\) in the stated scissors target.
+\end{proof}
+
+\begin{theorem}[Vanishing of the universal framed defect]
+\label{cp:thm-relative-defect-zero}
+The universal framed coefficient class is zero:
+\[
+ \delta_U^\vee=0
+ \quad\text{in}\quad
+ A\bigl(\Q_U(0),\Q_U(2)\bigr)
+\]
+for the restricted three-weight heart \(\mathcal M_U^{[0,2]}\).
+\end{theorem}
+
+\begin{proof}
+Proposition~\ref{cp:prop-weight-calculation} places the two framed motives,
+and hence their difference, in the heart of
+Lemma~\ref{cp:lem-three-weight-rigidity}.  Lemma
+\ref{cp:lem-coproduct-zero} says that their difference is primitive.  The
+primitive kernel is zero by \eqref{cp:eq-primitive-kernel-zero}.
+\end{proof}
+
+This theorem is an identity over the parameter space \(U\), not a density
+or continuity statement.  We next pull it back to the individual complex
+point determined by the original tetrahedron and identify exactly what it
+says about its scissors class.

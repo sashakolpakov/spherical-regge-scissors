@@ -1,0 +1,63 @@
+\documentclass[11pt,reqno]{amsart}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,
+  linkcolor=blue!55!black,
+  citecolor=green!40!black,
+  urlcolor=blue!65!black]{hyperref}
+\hypersetup{
+  pdftitle={The Spherical Regge Scissors Theorem: A Self-Contained Proof through Weight-Two Motives},
+  pdfauthor={}}
+
+\input{paper/macros}
+
+\newcommand{\Gm}{\mathbf G_m}
+\newcommand{\DM}{\operatorname{DM}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Ext}{\operatorname{Ext}}
+\newcommand{\gr}{\operatorname{gr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+\allowdisplaybreaks
+
+\title[The spherical Regge theorem]
+  {The Spherical Regge Scissors Theorem:\\
+   A Self-Contained Proof through Weight-Two Motives}
+\author{}
+\date{Research draft, 27 September 2026}
+
+\begin{document}
+
+\begin{abstract}
+We prove that every nondegenerate spherical tetrahedron is scissors
+congruent to each elementary Regge mate.  This text contains only the proof
+of that statement and the background needed to read it.  In particular, we
+derive the monomial Regge action on angle phases, rationalize the orientation
+double cover of the Gram-parameter space, explain the particular relative
+quadric motive used in the proof, compute its three weight pieces and its
+coproduct, and reduce the sole primitive obstruction to
+\(H^1(U,\Q(2))=0\).  We then spell out the specialization to the given
+tetrahedron and the final passage from Goncharov's quadric invariant to a
+finite spherical equidecomposition.  General motivic theory and alternative
+chain constructions are not developed beyond the precise standard results
+used in this argument.
+\end{abstract}
+
+\maketitle
+\tableofcontents
+
+\input{paper/sections/01_statement}
+\input{paper/sections/02_phase_charts}
+\input{paper/sections/03_motivic_dictionary}
+\input{paper/sections/04_relative_rigidity}
+\input{paper/sections/05_specialization_scissors}
+
+\bibliographystyle{alpha}
+\bibliography{paper/biblio}
+
+\end{document}
